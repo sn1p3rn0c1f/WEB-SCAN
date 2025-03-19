@@ -23,7 +23,6 @@ ______ _____ _      _____ _____ ___________ _____
 print(menu)
 
 def check_https(url):
-    """ Vérifie si le site utilise HTTPS """
     if not url.startswith("http"):
         url = "https://" + url  
     try:
@@ -36,7 +35,6 @@ def check_https(url):
         print(f"[X] Impossible d'accéder à {url}")
 
 def check_ssl_certificate(domain):
-    """ Vérifie la validité du certificat SSL """
     try:
         context = ssl.create_default_context()
         conn = context.wrap_socket(socket.socket(socket.AF_INET), server_hostname=domain)
@@ -47,7 +45,6 @@ def check_ssl_certificate(domain):
         print(f"[!] Problème avec le certificat SSL de {domain} : {e}")
 
 def check_http_headers(url):
-    """ Vérifie les en-têtes HTTP de sécurité """
     try:
         response = requests.get(url)
         headers = response.headers
@@ -65,7 +62,6 @@ def check_http_headers(url):
         print(f"[X] Impossible d'accéder à {url}")
 
 def scan_ports(domain):
-    """ Utilise nmap pour scanner les ports ouverts """
     nm = nmap.PortScanner()
     print("\n[🔍] Scan des ports ouverts...")
     try:
